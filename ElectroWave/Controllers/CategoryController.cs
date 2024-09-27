@@ -44,7 +44,6 @@ namespace ElectroWave.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public IActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
@@ -54,6 +53,29 @@ namespace ElectroWave.Controllers
                 return RedirectToAction("Index");
             }
             return View(category);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFromDb = context.Categories.Find(id);
+            return View(categoryFromDb);
+        }
+        [HttpPost,ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            var categoryFromDb = context.Categories.Find(id);
+            if(categoryFromDb == null)
+            {
+                return NotFound();
+            }
+            context.Categories.Remove(categoryFromDb);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+          
         }
     }
 }
