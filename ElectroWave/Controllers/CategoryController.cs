@@ -20,15 +20,16 @@ namespace ElectroWave.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public IActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
                 context.Categories.Add(category);
                 context.SaveChanges();
+                TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -50,6 +51,7 @@ namespace ElectroWave.Controllers
             {
                 context.Categories.Update(category);
                 context.SaveChanges();
+                TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -74,6 +76,8 @@ namespace ElectroWave.Controllers
             }
             context.Categories.Remove(categoryFromDb);
             context.SaveChanges();
+            TempData["success"] = "Category Deleted Successfully";
+
             return RedirectToAction("Index");
           
         }
