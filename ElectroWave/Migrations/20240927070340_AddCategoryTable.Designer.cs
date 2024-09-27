@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElectroWave.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240927063854_AddCategoryTable")]
+    [Migration("20240927070340_AddCategoryTable")]
     partial class AddCategoryTable
     {
         /// <inheritdoc />
@@ -31,10 +31,6 @@ namespace ElectroWave.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

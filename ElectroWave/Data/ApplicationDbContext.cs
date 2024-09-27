@@ -1,6 +1,4 @@
-﻿using ElectroWave.Models;
-using Microsoft.EntityFrameworkCore;
-
+﻿
 namespace ElectroWave.Data
 {
     public class ApplicationDbContext:DbContext
@@ -10,7 +8,10 @@ namespace ElectroWave.Data
         {
 
         }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Category> Categories { get; set; }
     }
 }
