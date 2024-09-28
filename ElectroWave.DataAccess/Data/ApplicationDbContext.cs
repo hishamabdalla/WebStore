@@ -1,5 +1,7 @@
-﻿
-namespace ElectroWave.Data
+﻿using ElectroWave.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace ElectroWave.DataAccess.Data
 {
     public class ApplicationDbContext:DbContext
     {

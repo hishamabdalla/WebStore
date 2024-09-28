@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ElectroWave.DataAccess.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ElectroWave.Controllers
 {

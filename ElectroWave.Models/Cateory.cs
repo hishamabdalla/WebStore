@@ -1,4 +1,6 @@
-﻿namespace ElectroWave.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ElectroWave.Models
 {
     public class Category
     {

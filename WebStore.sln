@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectroWave", "ElectroWave\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStoreRazor_Temp", "WebStoreRazor_Temp\WebStoreRazor_Temp.csproj", "{7C7E4129-C28F-49AF-B80B-21F1FB15C721}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectroWave.DataAccess", "ElectroWave.DataAccess\ElectroWave.DataAccess.csproj", "{2BF31C52-C4C7-4DD9-9336-DB57E29BBE24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectroWave.Models", "ElectroWave.Models\ElectroWave.Models.csproj", "{2DA511FC-3076-4508-B060-D974C10C8CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectroWave.Utility", "ElectroWave.Utility\ElectroWave.Utility.csproj", "{566C62F9-0014-4FDC-BA17-CAC409C3A20A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{7C7E4129-C28F-49AF-B80B-21F1FB15C721}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C7E4129-C28F-49AF-B80B-21F1FB15C721}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C7E4129-C28F-49AF-B80B-21F1FB15C721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF31C52-C4C7-4DD9-9336-DB57E29BBE24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF31C52-C4C7-4DD9-9336-DB57E29BBE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF31C52-C4C7-4DD9-9336-DB57E29BBE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF31C52-C4C7-4DD9-9336-DB57E29BBE24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA511FC-3076-4508-B060-D974C10C8CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA511FC-3076-4508-B060-D974C10C8CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA511FC-3076-4508-B060-D974C10C8CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA511FC-3076-4508-B060-D974C10C8CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566C62F9-0014-4FDC-BA17-CAC409C3A20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566C62F9-0014-4FDC-BA17-CAC409C3A20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566C62F9-0014-4FDC-BA17-CAC409C3A20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566C62F9-0014-4FDC-BA17-CAC409C3A20A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

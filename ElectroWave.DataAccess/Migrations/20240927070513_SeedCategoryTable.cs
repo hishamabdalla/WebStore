@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ElectroWave.Migrations
+namespace ElectroWave.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class SeedCategoryTable : Migration
