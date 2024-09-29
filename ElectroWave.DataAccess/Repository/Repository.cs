@@ -33,10 +33,9 @@ namespace ElectroWave.DataAccess.Repository
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter)
         {
             IQueryable<T> query = _dbSet;
-            query = query.Where(filter);
             return query.ToList();
         }
 

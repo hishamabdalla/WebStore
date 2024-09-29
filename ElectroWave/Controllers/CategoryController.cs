@@ -1,19 +1,20 @@
 ﻿using ElectroWave.DataAccess.Data;
+using ElectroWave.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ElectroWave.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly ICategoryRepository _categoryRepo;
 
-        public CategoryController(ApplicationDbContext context)
+        public CategoryController(ICategoryRepository categoryRepo)
         {
-            this.context = context;
+            this._categoryRepo = categoryRepo;
         }
         public IActionResult Index()
         {
-            List<Category> CategoryList=context.Categories.ToList();
+            List<Category> CategoryList=_categoryRepo.GetAll().ToList();
             return View(CategoryList);
         }
 
@@ -28,8 +29,8 @@ namespace ElectroWave.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Categories.Add(category);
-                context.SaveChanges();
+                _categoryRepo.Add(category);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
@@ -41,7 +42,7 @@ namespace ElectroWave.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = context.Categories.Find(id);
+            var categoryFromDb = _categoryRepo.Get(c=>c.Id==id);
             return View(categoryFromDb);
         }
         [HttpPost]
@@ -50,8 +51,8 @@ namespace ElectroWave.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Categories.Update(category);
-                context.SaveChanges();
+               _categoryRepo.Update(category);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index");
             }
@@ -64,19 +65,19 @@ namespace ElectroWave.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = context.Categories.Find(id);
+            var categoryFromDb = _categoryRepo.Get(c => c.Id == id);
             return View(categoryFromDb);
         }
         [HttpPost,ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            var categoryFromDb = context.Categories.Find(id);
-            if(categoryFromDb == null)
+            var categoryFromDb = _categoryRepo.Get(c => c.Id == id);
+            if (categoryFromDb == null)
             {
                 return NotFound();
             }
-            context.Categories.Remove(categoryFromDb);
-            context.SaveChanges();
+           _categoryRepo.Remove(categoryFromDb);
+            _categoryRepo.Save();
             TempData["success"] = "Category Deleted Successfully";
 
             return RedirectToAction("Index");
