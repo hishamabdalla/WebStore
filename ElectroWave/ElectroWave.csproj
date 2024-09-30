@@ -22,4 +22,8 @@
     <ProjectReference Include="..\ElectroWave.Utility\ElectroWave.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

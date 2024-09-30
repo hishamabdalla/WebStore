@@ -2,19 +2,20 @@
 using ElectroWave.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ElectroWave.Controllers
+namespace ElectroWave.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
         public CategoryController(IUnitOfWork unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> CategoryList=_unitOfWork.Category.GetAll().ToList();
+            List<Category> CategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(CategoryList);
         }
 
@@ -38,11 +39,11 @@ namespace ElectroWave.Controllers
         }
         public IActionResult Edit(int? id)
         {
-            if(id == null||id==0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var categoryFromDb = _unitOfWork.Category.Get(c=>c.Id==id);
+            var categoryFromDb = _unitOfWork.Category.Get(c => c.Id == id);
             return View(categoryFromDb);
         }
         [HttpPost]
@@ -68,7 +69,7 @@ namespace ElectroWave.Controllers
             var categoryFromDb = _unitOfWork.Category.Get(c => c.Id == id);
             return View(categoryFromDb);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
             var categoryFromDb = _unitOfWork.Category.Get(c => c.Id == id);
@@ -81,7 +82,7 @@ namespace ElectroWave.Controllers
             TempData["success"] = "Category Deleted Successfully";
 
             return RedirectToAction("Index");
-          
+
         }
     }
 }
