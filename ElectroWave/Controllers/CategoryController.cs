@@ -6,15 +6,15 @@ namespace ElectroWave.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _categoryRepo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository categoryRepo)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            this._categoryRepo = categoryRepo;
+            this._unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> CategoryList=_categoryRepo.GetAll().ToList();
+            List<Category> CategoryList=_unitOfWork.Category.GetAll().ToList();
             return View(CategoryList);
         }
 
@@ -29,8 +29,8 @@ namespace ElectroWave.Controllers
         {
             if (ModelState.IsValid)
             {
-                _categoryRepo.Add(category);
-                _categoryRepo.Save();
+                _unitOfWork.Category.Add(category);
+                _unitOfWork.Save();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
@@ -42,7 +42,7 @@ namespace ElectroWave.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _categoryRepo.Get(c=>c.Id==id);
+            var categoryFromDb = _unitOfWork.Category.Get(c=>c.Id==id);
             return View(categoryFromDb);
         }
         [HttpPost]
@@ -51,8 +51,8 @@ namespace ElectroWave.Controllers
         {
             if (ModelState.IsValid)
             {
-               _categoryRepo.Update(category);
-                _categoryRepo.Save();
+                _unitOfWork.Category.Update(category);
+                _unitOfWork.Save();
                 TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index");
             }
@@ -65,19 +65,19 @@ namespace ElectroWave.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _categoryRepo.Get(c => c.Id == id);
+            var categoryFromDb = _unitOfWork.Category.Get(c => c.Id == id);
             return View(categoryFromDb);
         }
         [HttpPost,ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            var categoryFromDb = _categoryRepo.Get(c => c.Id == id);
+            var categoryFromDb = _unitOfWork.Category.Get(c => c.Id == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
             }
-           _categoryRepo.Remove(categoryFromDb);
-            _categoryRepo.Save();
+            _unitOfWork.Category.Remove(categoryFromDb);
+            _unitOfWork.Save();
             TempData["success"] = "Category Deleted Successfully";
 
             return RedirectToAction("Index");

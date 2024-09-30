@@ -1,6 +1,5 @@
 ﻿using ElectroWave.DataAccess.Data;
 using ElectroWave.DataAccess.Repository.IRepository;
-using ElectroWave.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +8,21 @@ using System.Threading.Tasks;
 
 namespace ElectroWave.DataAccess.Repository
 {
-    public class CategoryRepository : Repository<Category>, ICategoryRepository
+    public class UnitOfWork : IUnitOfWork
     {
+        public ICategoryRepository Category { get; private set; }
+
         private readonly ApplicationDbContext _context;
 
-        public CategoryRepository(ApplicationDbContext context) : base(context)
+        public UnitOfWork(ApplicationDbContext context) 
         {
             this._context = context;
+            Category = new CategoryRepository(_context);
         }
-            
-        public void Update(Category category)
+
+        public void Save()
         {
-           _context.Categories.Update(category);
+           _context.SaveChanges();
         }
     }
 }
