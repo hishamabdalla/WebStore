@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ElectroWave.DataAccess.Repository
 {
-    internal class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : Repository<Product>, IProductRepository
     {
         private readonly ApplicationDbContext _context;
 
