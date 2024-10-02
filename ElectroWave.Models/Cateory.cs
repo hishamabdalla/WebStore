@@ -4,6 +4,7 @@ namespace ElectroWave.Models
 {
     public class Category
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -14,6 +15,8 @@ namespace ElectroWave.Models
         [Display(Name ="Display Order")]
         [Range(1,100)]
         public int DisplayOrder { get; set; }
+
+        public virtual ICollection<Product>? Products { get; set; }
 
     }
 }
