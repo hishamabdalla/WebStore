@@ -24,6 +24,7 @@ namespace ElectroWave.Models
         [MaxLength(2500, ErrorMessage = "Description can't be longer than 3000 characters.")]
         public string Description { get; set; }
 
+        [ValidateNever]
         public string ImageURL { get; set; }
 
         [ForeignKey("Category")]
