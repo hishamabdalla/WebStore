@@ -20,7 +20,7 @@ namespace ElectroWave.Areas.Admin.Controllers
             List<Product> ProductsList = _unitOfWork.Product.GetAll().ToList();
             return View(ProductsList);
         }
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
             ProductVM productVM = new()
             {
@@ -32,12 +32,24 @@ namespace ElectroWave.Areas.Admin.Controllers
                 Product = new Product()
 
             };
-            return View(productVM);
+            if (id == null || id == 0)
+            {
+                //Create
+                return View(productVM);
+            }
+            else
+            {
+                //Update
+                 productVM.Product = _unitOfWork.Product.Get(c => c.Id == id);
+                return View(productVM);
+
+            }
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ProductVM productVM)
+        public IActionResult Upsert(ProductVM productVM, IFormFile? file) //Update and Insert
         {
             if (ModelState.IsValid)
             {
@@ -49,37 +61,16 @@ namespace ElectroWave.Areas.Admin.Controllers
             else
             {
                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-                {
+               {
                     Text = u.Name,
                     Value = u.Id.ToString()
-                });
+               });
      
                 return View(productVM);
 
             }
         }
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var productFromDb = _unitOfWork.Product.Get(c => c.Id == id);
-            return View(productFromDb);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Product.Updata(product);
-                _unitOfWork.Save();
-                TempData["success"] = "Product Updated Successfully";
-                return RedirectToAction("Index");
-            }
-            return View(product);
-        }
+      
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
