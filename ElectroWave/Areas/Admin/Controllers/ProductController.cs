@@ -53,25 +53,44 @@ namespace ElectroWave.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM productVM, IFormFile? file) //Update and Insert
+        public IActionResult Upsert(ProductVM productVM, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath=_webHostEnvironment.WebRootPath;
-               if(file != null)
-               {
-                    string fileName=Guid.NewGuid().ToString()+Path.GetExtension(file.FileName);
-                    string productPath=Path.Combine(wwwRootPath, @"assets\Images\Product");
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"assets\Images\Product");
 
-                    using (var stream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    if (!string.IsNullOrEmpty(productVM.Product.ImageURL))
                     {
-                        file.CopyTo(stream);
-                    };
+                        //delete the old image
+                        var oldImagePath =
+                            Path.Combine(wwwRootPath, productVM.Product.ImageURL.TrimStart('\\'));
 
-                    productVM.Product.ImageURL = @"assets\Images\Product" + fileName;
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
+                
+                using var Stream = System.IO.File.Create(Path.Combine(productPath, fileName));
+                         file.CopyTo(Stream);
+
+                    productVM.Product.ImageURL = @"\assets\Images\Product\"+ fileName;
                     
                }
-                _unitOfWork.Product.Add(productVM.Product);
+                if (productVM.Product.Id == 0)
+                {
+                    _unitOfWork.Product.Add(productVM.Product);
+                }
+                else
+                {
+                    _unitOfWork.Product.Updata(productVM.Product);
+
+                }
                 _unitOfWork.Save();
                 TempData["success"] = "Product Created Successfully";
                 return RedirectToAction("Index");
