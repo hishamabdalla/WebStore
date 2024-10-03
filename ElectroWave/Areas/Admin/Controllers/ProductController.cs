@@ -21,7 +21,7 @@ namespace ElectroWave.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Product> ProductsList = _unitOfWork.Product.GetAll().ToList();
+            List<Product> ProductsList = _unitOfWork.Product.GetAll(includeProperties:"Category").ToList();
             return View(ProductsList);
         }
         public IActionResult Upsert(int? id)

@@ -18,9 +18,21 @@ namespace ElectroWave.DataAccess.Repository
         {
             this._context = context;
         }
-        public void Updata(Product product)
+        public void Updata(Product obj)
         {
-            _context.Products.Update(product);
+            var objFromDb = _context.Products.FirstOrDefault(u => u.Id == obj.Id);
+            if (objFromDb != null)
+            {
+                objFromDb.Name=obj.Name;
+                objFromDb.Description=obj.Description;
+                objFromDb.Price=obj.Price;
+                objFromDb.CategoryId=obj.CategoryId;
+
+                if (obj.ImageURL != null)
+                {
+                    objFromDb.ImageURL=obj.ImageURL;   
+                }
+            }
 
         }
     }
