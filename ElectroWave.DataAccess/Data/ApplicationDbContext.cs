@@ -1,9 +1,11 @@
 ﻿using ElectroWave.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElectroWave.DataAccess.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
             : base(options)
@@ -12,9 +14,7 @@ namespace ElectroWave.DataAccess.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
-
-          
+       
             modelBuilder.Entity<Product>()
             .Property(p => p.Price)
             .HasColumnType("decimal(18,2)");
