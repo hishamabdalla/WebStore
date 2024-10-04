@@ -19,6 +19,9 @@ namespace ElectroWave.Models
         public string Name { get; set; }
 
         [Range(1, 100000, ErrorMessage = "Price must be between 1 and 100,000.")]
+        public double ListPrice { get; set; }
+
+        [Range(1, 100000, ErrorMessage = "Price must be between 1 and 100,000.")]
         public double Price { get; set; }
 
         [MaxLength(2500, ErrorMessage = "Description can't be longer than 3000 characters.")]

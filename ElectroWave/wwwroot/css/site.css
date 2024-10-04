@@ -7,6 +7,9 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+.navbar {
+    margin-bottom: 40px;
+}
 
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
