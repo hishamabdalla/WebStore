@@ -1,27 +1,43 @@
-﻿﻿ /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* Navbar brand styles */
 a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
+    white-space: nowrap; /* Ensures the brand stays on one line */
+    text-align: left; /* Aligns the brand to the left */
+    font-weight: bold; /* Makes the brand text stand out */
+    word-wrap: break-word; /* Wrapping long words to avoid overflow */
 }
 
-/*a {
-  color: #0077cc;
-}*/
-
+/* Primary button styles */
 .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    color: #ffffff;
+    background-color: #28a745; /* Changed to a green shade */
+    border-color: #218838;
+    border-radius: 5px; /* Added rounded corners */
+    padding: 10px 20px; /* Adjusted padding for better spacing */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transform for a dynamic hover effect */
 }
 
+    .btn-primary:hover {
+        background-color: #1e7e34; /* Darker green on hover */
+        border-color: #1c7430;
+        transform: scale(1.05); /* Slight scaling on hover for a subtle effect */
+    }
+
+/* Active pill navigation link */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    color: #ffffff;
+    background-color: #28a745; /* Updated to match the green scheme */
+    border-color: #218838;
+    border-radius: 3px; /* Added slight rounding */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Smooth transition for active state */
 }
 
+.nav-pills .nav-link {
+    padding: 10px 15px; /* Adjusted padding for better clickability */
+    font-weight: 500; /* Slightly bolder text */
+}
+
+
+/* Border styles */
 .border-top {
     border-top: 1px solid #e5e5e5;
 }
@@ -30,13 +46,39 @@ a.navbar-brand {
     border-bottom: 1px solid #e5e5e5;
 }
 
+/* Box shadow utility */
 .box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05); /* Added spacing between numbers */
 }
 
+/* Button for accepting policy */
 button.accept-policy {
     font-size: 1rem;
-    line-height: inherit;
+    line-height: 1.5; /* Added line height for better readability */
 }
 
+/* Footer styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+}
 
+    /* Footer link styles */
+    .footer a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease; /* Smooth color change on hover */
+    }
+
+        /* Footer link hover effect */
+        .footer a:hover {
+            text-decoration: underline;
+            color: #0056b3; /* Slightly darker blue on hover */
+        }
