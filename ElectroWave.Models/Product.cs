@@ -18,10 +18,12 @@ namespace ElectroWave.Models
         [DisplayName("Product Name")]
         public string Name { get; set; }
 
-        [Range(1, 100000, ErrorMessage = "Price must be between 1 and 100,000.")]
-        public double ListPrice { get; set; }
+        [Range(1, 100000, ErrorMessage = "Original price must be between 1 and 100,000.")]
+        [DisplayName("Original Price")]
+        public double OriginalPrice { get; set; }  
 
         [Range(1, 100000, ErrorMessage = "Price must be between 1 and 100,000.")]
+        [DisplayName("Price After Discount")]
         public double Price { get; set; }
 
         [MaxLength(2500, ErrorMessage = "Description can't be longer than 3000 characters.")]
@@ -29,6 +31,8 @@ namespace ElectroWave.Models
 
         [ValidateNever]
         public string ImageURL { get; set; }
+
+        [DisplayName("Category")]
 
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }

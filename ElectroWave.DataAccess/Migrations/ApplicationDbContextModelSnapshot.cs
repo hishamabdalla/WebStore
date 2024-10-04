@@ -46,8 +46,38 @@ namespace ElectroWave.DataAccess.Migrations
                         new
                         {
                             Id = 1,
+                            DisplayOrder = 1,
+                            Name = "Mobile Phones"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DisplayOrder = 2,
+                            Name = "Laptops"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DisplayOrder = 3,
+                            Name = "Televisions"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayOrder = 4,
+                            Name = "Smartwatches"
+                        },
+                        new
+                        {
+                            Id = 5,
                             DisplayOrder = 5,
-                            Name = "Phones"
+                            Name = "Tablets"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DisplayOrder = 6,
+                            Name = "Headphones"
                         });
                 });
 
@@ -71,12 +101,12 @@ namespace ElectroWave.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ListPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("OriginalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -94,8 +124,8 @@ namespace ElectroWave.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Latest iPhone model with A15 chip, 128GB storage, and 5G connectivity.",
                             ImageURL = "",
-                            ListPrice = 1199.99m,
                             Name = "iPhone 14",
+                            OriginalPrice = 1199.99m,
                             Price = 999.99m
                         },
                         new
@@ -104,8 +134,8 @@ namespace ElectroWave.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Flagship smartphone from Samsung with 256GB storage and high-end performance.",
                             ImageURL = "",
-                            ListPrice = 1199.99m,
                             Name = "Samsung Galaxy S23",
+                            OriginalPrice = 1199.99m,
                             Price = 799.99m
                         },
                         new
@@ -114,8 +144,8 @@ namespace ElectroWave.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Lightweight and powerful laptop with the M2 chip, 512GB SSD, and 16GB RAM.",
                             ImageURL = "",
-                            ListPrice = 1199.99m,
                             Name = "MacBook Air M2",
+                            OriginalPrice = 1199.99m,
                             Price = 1299.99m
                         },
                         new
@@ -124,8 +154,8 @@ namespace ElectroWave.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Industry-leading noise canceling headphones with 30-hour battery life.",
                             ImageURL = "",
-                            ListPrice = 1199.99m,
                             Name = "Sony WH-1000XM5",
+                            OriginalPrice = 1199.99m,
                             Price = 349.99m
                         },
                         new
@@ -134,8 +164,8 @@ namespace ElectroWave.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Cordless vacuum cleaner with powerful suction and up to 60 minutes of run time.",
                             ImageURL = "",
-                            ListPrice = 1199.99m,
                             Name = "Dyson V11 Vacuum Cleaner",
+                            OriginalPrice = 1199.99m,
                             Price = 599.99m
                         });
                 });

@@ -33,8 +33,10 @@ namespace ElectroWave.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(2500)", maxLength: 2500, nullable: false),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -54,14 +56,14 @@ namespace ElectroWave.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "CategoryId", "Description", "Name", "Price" },
+                columns: new[] { "Id", "CategoryId", "Description", "ImageURL", "Name", "OriginalPrice", "Price" },
                 values: new object[,]
                 {
-                    { 1, 1, "Latest iPhone model with A15 chip, 128GB storage, and 5G connectivity.", "iPhone 14", 999.99m },
-                    { 2, 1, "Flagship smartphone from Samsung with 256GB storage and high-end performance.", "Samsung Galaxy S23", 799.99m },
-                    { 3, 1, "Lightweight and powerful laptop with the M2 chip, 512GB SSD, and 16GB RAM.", "MacBook Air M2", 1299.99m },
-                    { 4, 1, "Industry-leading noise canceling headphones with 30-hour battery life.", "Sony WH-1000XM5", 349.99m },
-                    { 5, 1, "Cordless vacuum cleaner with powerful suction and up to 60 minutes of run time.", "Dyson V11 Vacuum Cleaner", 599.99m }
+                    { 1, 1, "Latest iPhone model with A15 chip, 128GB storage, and 5G connectivity.", "", "iPhone 14", 1199.99m, 999.99m },
+                    { 2, 1, "Flagship smartphone from Samsung with 256GB storage and high-end performance.", "", "Samsung Galaxy S23", 1199.99m, 799.99m },
+                    { 3, 1, "Lightweight and powerful laptop with the M2 chip, 512GB SSD, and 16GB RAM.", "", "MacBook Air M2", 1199.99m, 1299.99m },
+                    { 4, 1, "Industry-leading noise canceling headphones with 30-hour battery life.", "", "Sony WH-1000XM5", 1199.99m, 349.99m },
+                    { 5, 1, "Cordless vacuum cleaner with powerful suction and up to 60 minutes of run time.", "", "Dyson V11 Vacuum Cleaner", 1199.99m, 599.99m }
                 });
 
             migrationBuilder.CreateIndex(

@@ -26,6 +26,7 @@ namespace ElectroWave.DataAccess.Repository
                 objFromDb.Name=obj.Name;
                 objFromDb.Description=obj.Description;
                 objFromDb.Price=obj.Price;
+                objFromDb.OriginalPrice=obj.OriginalPrice;
                 objFromDb.CategoryId=obj.CategoryId;
 
                 if (obj.ImageURL != null)
