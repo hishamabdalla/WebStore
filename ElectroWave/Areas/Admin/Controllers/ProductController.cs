@@ -1,12 +1,16 @@
 ﻿using ElectroWave.DataAccess.Repository.IRepository;
 using ElectroWave.Models;
 using ElectroWave.Models.ViewModels;
+using ElectroWave.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ElectroWave.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
+
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

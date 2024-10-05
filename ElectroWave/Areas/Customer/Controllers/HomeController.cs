@@ -1,5 +1,6 @@
 using ElectroWave.DataAccess.Repository.IRepository;
 using ElectroWave.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,6 +24,7 @@ namespace ElectroWave.Areas.Customer.Controllers
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
             return View(productList);
         }
+        [Authorize]
         public IActionResult Details(int?id)
         {
            Product product = _unitOfWork.Product.Get(p=>p.Id==id,includeProperties: "Category");
