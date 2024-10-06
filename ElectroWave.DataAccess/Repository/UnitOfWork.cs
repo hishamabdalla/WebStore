@@ -1,5 +1,6 @@
 ﻿using ElectroWave.DataAccess.Data;
 using ElectroWave.DataAccess.Repository.IRepository;
+using ElectroWave.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace ElectroWave.DataAccess.Repository
     {
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product  { get; private set; }
-        public ICompanyRepository Company { get; }
+        public ICompanyRepository Company { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; private set; }
 
 
 
@@ -24,6 +26,8 @@ namespace ElectroWave.DataAccess.Repository
             Category = new CategoryRepository(_context);
             Product = new ProductRepository(_context);
             Company = new CompanyRepository(_context);
+            ShoppingCart=new ShopingCartRepository(_context);
+
         }
 
         public void Save()
