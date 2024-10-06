@@ -18,8 +18,8 @@ namespace ElectroWave.DataAccess.Repository
             _context = context;
         }
         public void Update(Company company)
-        {
-            throw new NotImplementedException();
+        { 
+            _context.Update(company);
         }
     }
 }
