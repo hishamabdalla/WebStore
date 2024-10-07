@@ -25,10 +25,15 @@ namespace ElectroWave.Areas.Customer.Controllers
             return View(productList);
         }
         [Authorize]
-        public IActionResult Details(int?id)
+        public IActionResult Details(int id)
         {
-           Product product = _unitOfWork.Product.Get(p=>p.Id==id,includeProperties: "Category");
-            return View(product);
+            ShoppingCart shoppingCart = new()
+            {
+                Product = _unitOfWork.Product.Get(p => p.Id == id, includeProperties: "Category"),
+                Count = 1,
+                ProductId = id
+            };
+            return View(shoppingCart);
         }
 
         public IActionResult Privacy()

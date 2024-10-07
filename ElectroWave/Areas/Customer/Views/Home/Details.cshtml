@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model ShoppingCart
 @{
     ViewData["Title"] = "Product Details";
 }
@@ -8,7 +8,7 @@
         <div class="card-header bg-primary bg-gradient text-light py-4">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="text-white text-uppercase">@Model.Name</h3>
+                    <h3 class="text-white text-uppercase">@Model.Product.Name</h3>
                     
                 </div>
             </div>
@@ -24,17 +24,17 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-3 offset-lg-1 text-center mb-3">
-                        <img src="@Model.ImageURL" alt="@Model.Name" class="img-fluid rounded" />
+                        <img src="@Model.Product.ImageURL" alt="@Model.Product.Name" class="img-fluid rounded" />
                     </div>
                     <div class="col-12 col-lg-6 offset-lg-1">
                         <div class="col-12 col-md-6 pb-4">
-                            <span class="badge bg-secondary">@Model.Category.Name</span>
+                            <span class="badge bg-secondary">@Model.Product.Category.Name</span>
                         </div>
                        
                         <div class="row ps-2">
                             <h6 class="text-dark text-opacity-50 pb-2">
                                 List Price:
-                                <span class="text-decoration-line-through">@Model.OriginalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"))</span>
+                                <span class="text-decoration-line-through">@Model.Product.OriginalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"))</span>
                             </h6>
                         </div>
                         <div class="row text-center ps-2">
@@ -51,12 +51,12 @@
 
                             </div>
                             <div class="p-1 col-3 col-lg-2 bg-white text-warning fw-bold">
-                                <div>@Model.Price.ToString("C", new System.Globalization.CultureInfo("en-US"))</div>
+                                <div>@Model.Product.Price.ToString("C", new System.Globalization.CultureInfo("en-US"))</div>
                             </div>
                             
                         </div>
                         <div class="row pl-2 my-3">
-                            <p class="text-secondary lh-sm">@Model.Description</p>
+                            <p class="text-secondary lh-sm">@Model.Product.Description</p>
                         </div>
                         <div class="row pl-2 mb-3">
                             <div class="col-md-4">
@@ -64,14 +64,14 @@
                                     <span class="input-group-text bg-primary text-white border-0 fw-semibold" id="inputGroup-sizing-default">
                                         Count
                                     </span>
-                                    <input type="number" value="1" class="form-control text-end" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                                    <input asp-for="Count" type="number" value="1" class="form-control text-end" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 pb-1">
                                 <button type="submit" class="btn btn-primary bg-gradient w-100 py-2 text-uppercase fw-semibold">
-                                    Add to Cart (Coming Soon...)
+                                    Add to Cart 
                                 </button>
                             </div>
                         </div>

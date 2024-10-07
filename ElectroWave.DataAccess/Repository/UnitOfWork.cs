@@ -15,6 +15,7 @@ namespace ElectroWave.DataAccess.Repository
         public IProductRepository Product  { get; private set; }
         public ICompanyRepository Company { get; private set; }
         public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
 
 
 
@@ -27,6 +28,7 @@ namespace ElectroWave.DataAccess.Repository
             Product = new ProductRepository(_context);
             Company = new CompanyRepository(_context);
             ShoppingCart=new ShopingCartRepository(_context);
+            ApplicationUser = new ApplicationUserRepository(_context);
 
         }
 
