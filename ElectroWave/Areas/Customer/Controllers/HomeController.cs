@@ -42,7 +42,21 @@ namespace ElectroWave.Areas.Customer.Controllers
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             shoppingCart.ApplicationUserId = userId;
 
-            _unitOfWork.ShoppingCart.Add(shoppingCart);
+            ShoppingCart cartFromDb=_unitOfWork.ShoppingCart.Get(i=>i.ApplicationUserId == userId&& i.ProductId==shoppingCart.ProductId);
+
+            if(cartFromDb != null)
+            {
+                //Update
+               cartFromDb.Count+=shoppingCart.Count;
+                _unitOfWork.ShoppingCart.Update(cartFromDb);
+            }
+            else
+            {
+                //create
+                _unitOfWork.ShoppingCart.Add(shoppingCart);
+            }
+
+           
             _unitOfWork.Save();
 
 
