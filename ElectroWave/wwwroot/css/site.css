@@ -549,3 +549,38 @@ bg-success {
         background-color: #578553;
         border-color: #578553;
     }
+
+    /*ShoppingCart*/
+.navbar-nav.ms-auto .nav-item {
+    margin-left: 1rem; /* Adds space between the cart and login/logout controls */
+}
+
+    .navbar-nav.ms-auto .nav-item .nav-link {
+        display: flex;
+        align-items: center; /* Vertically aligns the cart and username */
+    }
+.nav-link.position-relative {
+    padding-right: 1rem; /* Extra space on the right for the badge */
+}
+
+.nav-link i {
+    color: white; /* White color for better visibility on dark backgrounds */
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-link:hover i {
+    transform: scale(1.1); /* Slightly enlarge the cart icon on hover */
+}
+
+/*.badge.bg-danger {
+    background-color: #ff6b6b;*/ /* Softer red tone for the badge */
+    /*padding: 5px 10px;*/ /* Slightly larger padding */
+/*}*/
+
+.navbar-nav .nav-item .nav-link .badge {
+    border: 2px solid white; /* White border for better contrast */
+}
+
+.nav-link:hover .badge {
+    background-color: #dc3545; /* Darker red on hover */
+}
