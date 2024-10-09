@@ -23,7 +23,16 @@ namespace ElectroWave.Areas.Customer.Controllers
             {
                 ShoppingCartList = _unitOfWork.ShoppingCart.GetAll(u=>u.ApplicationUserId==userId,includeProperties:"Product")
             };
+            foreach (var cart in ShoppingCartVM.ShoppingCartList)
+            {
+                cart.Price = cart.Product.Price;
+                ShoppingCartVM.OrderTotal += cart.Price * cart.Count;
+            }
             return View(ShoppingCartVM);
+
+
         }
+
+        
     }
 }

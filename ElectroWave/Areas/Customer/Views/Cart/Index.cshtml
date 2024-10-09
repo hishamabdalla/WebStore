@@ -1,4 +1,4 @@
-﻿
+﻿@model ShoppingCartVM
 <form method="post">
     <br />
     <div class="card shadow border-0">
@@ -17,7 +17,7 @@
             </div>
             <div class="row mb-3 pb-3">
                 <div class="col-md-2 offset-md-1">
-                    <a href="#" class="btn btn-outline-primary text-uppercase mb-5 btn-sm"><small>Continue Shopping</small></a>
+                    <a asp-action="Index" asp-controller="Home" asp-area="Customer" class="btn btn-outline-primary text-uppercase mb-5 btn-sm"><small>Continue Shopping</small></a>
                 </div>
                 <div class="col-md-10 offset-md-1">
 
