@@ -55,7 +55,7 @@ namespace ElectroWave.Areas.Customer.Controllers
                 //create
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
             }
-
+            TempData["success"] = "Cart Updated Successfully";
            
             _unitOfWork.Save();
 

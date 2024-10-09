@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ElectroWave.DataAccess.Repository
 {
@@ -26,10 +27,11 @@ namespace ElectroWave.DataAccess.Repository
             _dbSet.Add(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
         {
-            IQueryable<T> query = _dbSet;
-            query=query.Where(filter);
+            IQueryable<T> query = tracked ? _dbSet :  _dbSet.AsNoTracking();
+
+            query = query.Where(filter);
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var property in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
