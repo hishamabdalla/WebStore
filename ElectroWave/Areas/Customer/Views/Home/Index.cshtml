@@ -28,7 +28,7 @@
                             <span class="list-price">@product.OriginalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"))</span>
                             <span class="discount-price">@product.Price.ToString("C", new System.Globalization.CultureInfo("en-US"))</span>
                         </p>
-                        <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-dark w-100 rounded-pill" >Details</a>
+                        <a asp-action="Details" asp-route-ProductId="@product.Id" class="btn btn-dark w-100 rounded-pill" >Details</a>
                     </div>
                 </div>
             </div>

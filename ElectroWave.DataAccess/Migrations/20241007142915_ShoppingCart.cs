@@ -5,7 +5,7 @@
 namespace ElectroWave.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddShoppingCart : Migration
+    public partial class ShoppingCart : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

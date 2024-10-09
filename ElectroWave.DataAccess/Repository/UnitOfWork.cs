@@ -27,9 +27,8 @@ namespace ElectroWave.DataAccess.Repository
             Category = new CategoryRepository(_context);
             Product = new ProductRepository(_context);
             Company = new CompanyRepository(_context);
-            ShoppingCart=new ShopingCartRepository(_context);
             ApplicationUser = new ApplicationUserRepository(_context);
-
+            ShoppingCart = new ShopingCartRepository(_context);
         }
 
         public void Save()
