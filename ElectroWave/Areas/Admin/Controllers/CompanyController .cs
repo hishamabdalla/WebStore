@@ -23,7 +23,7 @@ namespace ElectroWave.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Company> CompanysList = _unitOfWork.Company.GetAll().ToList();
+            List<Company> CompanysList = _unitOfWork.Company.GetAll(null).ToList();
             return View(CompanysList);
         }
         public IActionResult Upsert(int? id)
